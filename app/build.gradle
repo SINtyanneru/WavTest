@@ -1,0 +1,27 @@
+plugins {
+	id 'com.github.johnrengelman.shadow' version '8.1.1'
+	id 'application'
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	//自作ライブラリ
+	implementation files("/home/rumisan/source/RumiJavaLib/build/libs/RumiJavaLib-1.0-all.jar")
+}
+
+application {
+	mainClass = "com.rumisystem.wavtest.Main"
+}
+
+jar {
+	manifest {
+		attributes("Main-Class": "com.rumisystem.wavtest.Main")
+	}
+}
+
+tasks.withType(JavaCompile) {
+	options.encoding = 'UTF-8'
+}
