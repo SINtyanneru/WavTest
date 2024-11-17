@@ -129,13 +129,19 @@ public class Main {
 					LOG(LOG_TYPE.OK, "スピーカーを初期化しました、再生を開始します");
 					System.out.println("");
 
-					for(int P = POS + 4; P < DATA_LENGTH; P += BUFFER_SIZE){
+					for(int P = POS + 4; P < DATA_LENGTH; P += 1000){
+						byte[] BUFFER = new byte[1000];
+
 						PROGRESS_DRAW(P, (int) DATA_LENGTH, SAMPLING_RATE, BLOCK_SIZE);
 
-						//読み込んだ分を入れる
-						line.write(DATA, 0, BUFFER_SIZE);
-					}
+						//1000バイトずつ読み込む
+						for(int B = 0; B < BUFFER.length; B++){
+							BUFFER[B] = DATA[P + B];
+						}
 
+						//読み込んだ分を入れる
+						line.write(BUFFER, 0, BUFFER.length);
+					}
 					LOG(LOG_TYPE.OK, "再生完了");
 
 					//開放
