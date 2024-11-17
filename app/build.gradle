@@ -9,7 +9,7 @@ repositories {
 
 dependencies {
 	//自作ライブラリ
-	implementation files("/home/rumisan/source/RumiJavaLib/build/libs/RumiJavaLib-1.0-all.jar")
+	implementation files("/home/rumisan/source/RumiJavaLib/build/libs/RumiJavaLib-8.6-all.jar")
 }
 
 application {
